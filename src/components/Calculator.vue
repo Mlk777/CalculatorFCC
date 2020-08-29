@@ -1,7 +1,7 @@
 <template>
   <div class="calc">
     <div class="display">{{ current || '0'}}</div>
-    <div @click="clear()" class="btn special-button">AC</div>
+    <div @click="clear()" class="btn special-button">{{ current ? 'C' : 'AC'}}</div>
     <div @click="sign()" class="btn special-button">+/-</div>
     <div @click="percent()" class="btn special-button">%</div>
     <div @click="divide()" class="btn operator">÷</div>
@@ -94,9 +94,10 @@ export default {
 };
 
 /*
-Don't allow multiple 0 at the start
-run equal each time operator is clicked
-*/
+ * TODO: Don't allow multiple 0 at the start
+ * TODO: run equal each time operator is clicked
+ * TODO: When current.length == 10 reduce font-size by 0.2 each number added
+ */
 </script>
 
 <style scoped>
@@ -142,6 +143,10 @@ run equal each time operator is clicked
   background-color: #888484;
   color: white;
   border: 1px #999 solid;
+}
+
+.btn:active {
+  background-color: #9e9e9e;
 }
 
 .special-button {
